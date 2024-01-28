@@ -1,0 +1,45 @@
+
+@{
+    var controllerAtual = ViewContext.RouteData.Values["controller"].ToString();
+    var classeMenuPrincipal = controllerAtual == "Home" ? "active" : "";
+    var classeMenuProdutos = controllerAtual == "Produtos" ? "active" : "";
+    var classeMenuCategorias = controllerAtual == "Categorias" ? "active" : "";
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/lib/bootstrap5/dist/css/bootstrap.css">
+    <title>EstoqueWeb:: @ViewBag.Subtitulo</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">EstoqueWeb</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                        <a asp-action="Index" asp-controller="Home" class="nav-link @classeMenuPrincipal">Home</a>
+                        <a asp-action="Produtos" asp-controller="Home" class="nav-link @classeMenuProdutos">Produtos</a>
+                        <a asp-action="Categorias" asp-controller="Home" class="nav-link @classeMenuCategorias">Cagetorias</a>
+                    </li>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-2">
+    </div>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <div class="text-light bg-dark p-3 fixed-bottom text-center">
+        EstoqueWeb&copy; @DateTime.Now.Year.ToString()<br>
+        Todos os direitos reservados
+    </div>
+    <script src="/lib/bootstrap5/dist/js/bootstrap.js"></script>
+</body>
+</html>
